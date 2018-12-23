@@ -1,0 +1,6 @@
+[user]
+	name = lopun
+	email = ujin43255252@gmail.com
+[core]
+	precomposeunicode = true
+	quotepath = false
