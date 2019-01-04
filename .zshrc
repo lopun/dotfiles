@@ -100,23 +100,29 @@ export EDITOR='vim'
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
+alias myvim="vim ~/.vim_runtime/my_configs.vim"
 alias cl="clear"
 alias cll="clear && l"
 alias mux="tmuxinator"
 alias gs="git status"
-alias dev="cd ~/Development/Riiid/"
+alias dev="cd ~/Development"
+alias interv="cd ~/Development/interview_preparation"
+alias riiid="cd ~/Development/Riiid"
+alias ocr="cd ~/Development/Riiid/ocr_toeic"
+alias docker-rma="docker rm $(docker ps -a -q)"
 
 # Personal Autoload
-autoload -U promptinit; promptinit
-prompt pure
+# autoload -U promptinit; promptinit
+# prompt pure
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/bin:$PATH"
-
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 PKG_CONFIG_PATH="/usr/local/opt/opencv@2/lib/pkgconfig
 LDFLAGS="-L/usr/local/opt/opencv@2/lib"
 CPPFLAGS="-I/usr/local/opt/opencv@2/include
-export PATH="/usr/local/opt/opencv@2/bin:$PATH"
+
+export NVM_DIR="/Users/lopun/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
