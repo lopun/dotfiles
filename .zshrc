@@ -105,11 +105,13 @@ alias cl="clear"
 alias cll="clear && l"
 alias mux="tmuxinator"
 alias gs="git status"
+alias gc="git commit -m"
+alias gp="git push"
 alias dev="cd ~/Development"
 alias interv="cd ~/Development/interview_preparation"
 alias riiid="cd ~/Development/Riiid"
-alias ocr="cd ~/Development/Riiid/ocr_toeic"
-alias docker-rma="docker rm $(docker ps -a -q)"
+alias ocr="cd ~/Development/Riiid/bootcamp/jh.ko"
+alias docker-rma="docker rm -f $(docker ps -a -q)"
 
 # Personal Autoload
 # autoload -U promptinit; promptinit
