@@ -8,7 +8,7 @@ export ZSH="/Users/lopun/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME=robbyrussell
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -103,6 +103,7 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 alias myvim="vim ~/.vim_runtime/my_configs.vim"
 alias cl="clear"
 alias cll="clear && l"
+alias ctags="`brew --prefix`/bin/ctags"
 alias mux="tmuxinator"
 alias gs="git status"
 alias gc="git commit -m"
@@ -111,20 +112,32 @@ alias dev="cd ~/Development"
 alias interv="cd ~/Development/interview_preparation"
 alias riiid="cd ~/Development/Riiid"
 alias ocr="cd ~/Development/Riiid/bootcamp/jh.ko"
+alias sab="cd ~/Development/Riiid/bootcamp/jh.ko/sentence_analysis_backoffice"
 alias docker-rma="docker rm -f $(docker ps -a -q)"
+alias sls="serverless"
+
+# aws sam path configuration
+export PATH="${HOME}/Library/Python/2.7/bin:$PATH"
+
+# rbenv configuration
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 # Personal Autoload
 # autoload -U promptinit; promptinit
 # prompt pure
+
+# TheFuck initialization
+eval $(thefuck --alias)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/bin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-PKG_CONFIG_PATH="/usr/local/opt/opencv@2/lib/pkgconfig
-LDFLAGS="-L/usr/local/opt/opencv@2/lib"
-CPPFLAGS="-I/usr/local/opt/opencv@2/include
-
-export NVM_DIR="/Users/lopun/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/lopun/.nvm/versions/node/v11.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/lopun/.nvm/versions/node/v11.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/lopun/.nvm/versions/node/v11.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/lopun/.nvm/versions/node/v11.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
