@@ -27,6 +27,9 @@ Plugin 'mindriot101/vim-yapf'
 Plugin 'tpope/vim-surround'
 Plugin 'rust-lang/rust.vim'
 Plugin 'ternjs/tern_for_vim', {'do': 'npm install && npm install -g tern'}
+Plugin 'tomasiser/vim-code-dark'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " "
@@ -122,3 +125,7 @@ map <C-c> y:e ~/clipsongzboard<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
 nmap <leader>d <Plug>(ale_fix)
 map <leader>p :Prettier<CR>
 map <leader>a :Autopep8<CR>
+
+""" color schme - vscode theme
+colorscheme codedark
+let g:airline_theme = 'codedark'
