@@ -141,3 +141,23 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /Users/lopun/.nvm/versions/node/v11.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/lopun/.nvm/versions/node/v11.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+source /usr/local/opt/autoenv/activate.sh
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# For compilers to find zlib you may need to set:
+export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
+export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
+
+# For pkg-config to find zlib you may need to set:
+export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
+export MAILGUN_API_KEY="key-4ff46f2d503920e72f165514491739ae"
+export MAILGUN_DOMAIN="lis.riiid.co"
+
+export PATH="/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH"
