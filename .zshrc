@@ -176,17 +176,12 @@ export PATH="/Users/lopun/pbandk-0.8.0/protoc-gen-kotlin:$PATH"
 export JAVA_HOME=$(/usr/libexec/java_home)
 export KUBECONFIG=$KUBECONFIG:~/.kube/config
 
-# app-server
-# -DCONF_CONTENT_SERVER_PORT=6565 -DCONF_RDB_HOST=santa-content-dev.csuygapvvxfi.ap-northeast-1.rds.amazonaws.com -DCONF_RDB_PORT=5432 -DCONF_RDB_DATABASE=santainsidedev -DCONF_RDB_USER=riiid -DCONF_RDB_PASSWORD=gsz6M934pCitak3QkFEC -DCONF_SM_SECRET_NAME=santa/accessTokenKey -DCONF_S3_BUCKET=santa-cms-statics -DCONF_S3_KEY_PREFIX="" -DCONF_CONTENT_SERVER_HOST=santa-content.riiid.io
-
-# export CONF_CONTENT_SERVER_HOST="content.dev.riiid.cloud"
-# export CONF_CONTENT_SERVER_PORT="31400"
-# export CONF_RDB_HOST="sat-db.dev.riiid.cloud"
-# export CONF_RDB_PORT="31400"
-# export CONF_RDB_DATABASE="sat"
-# export CONF_RDB_USER="root"
-# export CONF_RDB_PASSWORD="santainside"
-# export CONF_S3_BUCKET="sat-dev"
-# export CONF_S3_KEY_PREFIX="app/"
-# export CONF_DOMAIN="sat"
-# export CONF_ENV="develop"
+# kube-ps1 config
+source /usr/local/Cellar/kube-ps1/0.7.0/share/kube-ps1.sh
+PROMPT='$(kube_ps1)'$'\n'$PROMPT
+export KUBE_PS1_SYMBOL_USE_IMG=true
+function get_cluster_short() {
+  echo "$1" | rev | cut -d '/' -f 1 | rev
+}
+export KUBE_PS1_CLUSTER_FUNCTION=get_cluster_short
+export KUBE_PS1_SUFFIX=")"
