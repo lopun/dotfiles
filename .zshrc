@@ -106,8 +106,11 @@ alias cll="clear && l"
 alias ctags="`brew --prefix`/bin/ctags"
 alias mux="tmuxinator"
 alias gs="git status"
-alias gc="git commit -m"
 alias gp="git push"
+alias gl="git pull"
+alias gpf="git push -f"
+alias gc="git checkout"
+alias gcb="git checkout -b"
 alias dev="cd ~/Development"
 alias interv="cd ~/Development/interview_preparation"
 alias riiid="cd ~/Development/Riiid"
@@ -115,6 +118,14 @@ alias ocr="cd ~/Development/Riiid/bootcamp/jh.ko"
 alias sab="cd ~/Development/Riiid/bootcamp/jh.ko/sentence_analysis_backoffice"
 alias docker-rma="docker rm -f $(docker ps -a -q)"
 alias sls="serverless"
+alias k="kubectl"
+
+# aws sam path configuration
+export GOPATH="${HOME}/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+test -d "${GOPATH}" || mkdir "${GOPATH}"
+test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 
 # aws sam path configuration
 export PATH="${HOME}/Library/Python/2.7/bin:$PATH"
@@ -161,3 +172,21 @@ export MAILGUN_API_KEY="key-4ff46f2d503920e72f165514491739ae"
 export MAILGUN_DOMAIN="lis.riiid.co"
 
 export PATH="/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH"
+export PATH="/Users/lopun/pbandk-0.8.0/protoc-gen-kotlin:$PATH"
+export JAVA_HOME=$(/usr/libexec/java_home)
+export KUBECONFIG=$KUBECONFIG:~/.kube/config
+
+# app-server
+# -DCONF_CONTENT_SERVER_PORT=6565 -DCONF_RDB_HOST=santa-content-dev.csuygapvvxfi.ap-northeast-1.rds.amazonaws.com -DCONF_RDB_PORT=5432 -DCONF_RDB_DATABASE=santainsidedev -DCONF_RDB_USER=riiid -DCONF_RDB_PASSWORD=gsz6M934pCitak3QkFEC -DCONF_SM_SECRET_NAME=santa/accessTokenKey -DCONF_S3_BUCKET=santa-cms-statics -DCONF_S3_KEY_PREFIX="" -DCONF_CONTENT_SERVER_HOST=santa-content.riiid.io
+
+# export CONF_CONTENT_SERVER_HOST="content.dev.riiid.cloud"
+# export CONF_CONTENT_SERVER_PORT="31400"
+# export CONF_RDB_HOST="sat-db.dev.riiid.cloud"
+# export CONF_RDB_PORT="31400"
+# export CONF_RDB_DATABASE="sat"
+# export CONF_RDB_USER="root"
+# export CONF_RDB_PASSWORD="santainside"
+# export CONF_S3_BUCKET="sat-dev"
+# export CONF_S3_KEY_PREFIX="app/"
+# export CONF_DOMAIN="sat"
+# export CONF_ENV="develop"
