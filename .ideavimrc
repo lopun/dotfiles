@@ -1,0 +1,9 @@
+Plug 'tpope/vim-surround'
+Plug 'preservim/nerdtree'
+set hlsearch
+set visualbell
+set noerrorbells
+map <c-t>   :NERDTree<CR>
+set smartcase
+set incsearch
+nmap <C-o> :action Back<CR>

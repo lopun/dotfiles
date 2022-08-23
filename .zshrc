@@ -1,18 +1,20 @@
+zstyle ':znap:*' repos-dir ~
+source ~/dev/zsh-snap/znap.zsh
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/lopun/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME=robbyrussell
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
@@ -23,11 +25,16 @@ ZSH_THEME=robbyrussell
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -39,6 +46,9 @@ ZSH_THEME=robbyrussell
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -58,17 +68,11 @@ ZSH_THEME=robbyrussell
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  zsh-syntax-highlighting
-  zsh-autosuggestions
-  fasd
-  tmux
-  tmuxinator
-)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -81,7 +85,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-export EDITOR='vim'
+#   export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
 # fi
@@ -89,99 +93,31 @@ export EDITOR='vim'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
-alias myvim="vim ~/.vim_runtime/my_configs.vim"
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias cl="clear"
-alias cll="clear && l"
-alias ctags="`brew --prefix`/bin/ctags"
-alias mux="tmuxinator"
+alias sshGongu="ssh -i ~/supergongu.pem ubuntu@ec2-13-124-109-155.ap-northeast-2.compute.amazonaws.com"
+alias sshStrapi="ssh -i ~/supergongu.pem ubuntu@ec2-43-200-152-135.ap-northeast-2.compute.amazonaws.com"
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 alias gs="git status"
 alias gp="git push"
-alias gl="git pull"
-alias gpf="git push -f"
 alias gc="git checkout"
-alias gcb="git checkout -b"
-alias dev="cd ~/Development"
-alias interv="cd ~/Development/interview_preparation"
-alias riiid="cd ~/Development/Riiid"
-alias ocr="cd ~/Development/Riiid/bootcamp/jh.ko"
-alias sab="cd ~/Development/Riiid/bootcamp/jh.ko/sentence_analysis_backoffice"
-alias docker-rma="docker rm -f $(docker ps -a -q)"
-alias sls="serverless"
-alias k="kubectl"
-
-# aws sam path configuration
-export GOPATH="${HOME}/.go"
-export GOROOT="$(brew --prefix golang)/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-test -d "${GOPATH}" || mkdir "${GOPATH}"
-test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
-
-# aws sam path configuration
-export PATH="${HOME}/Library/Python/2.7/bin:$PATH"
-
-# rbenv configuration
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# Personal Autoload
-# autoload -U promptinit; promptinit
-# prompt pure
-
-# TheFuck initialization
-eval $(thefuck --alias)
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH="/usr/local/bin:$PATH"
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/lopun/.nvm/versions/node/v11.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/lopun/.nvm/versions/node/v11.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/lopun/.nvm/versions/node/v11.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/lopun/.nvm/versions/node/v11.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-source /usr/local/opt/autoenv/activate.sh
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-# For compilers to find zlib you may need to set:
-export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
-export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
-
-# For pkg-config to find zlib you may need to set:
-export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
-
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
-export MAILGUN_API_KEY="key-4ff46f2d503920e72f165514491739ae"
-export MAILGUN_DOMAIN="lis.riiid.co"
-
-export PATH="/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH"
-export PATH="/Users/lopun/pbandk-0.8.0/protoc-gen-kotlin:$PATH"
-export JAVA_HOME=$(/usr/libexec/java_home)
-export KUBECONFIG=$KUBECONFIG:~/.kube/config
-
-# kube-ps1 config
-source /usr/local/Cellar/kube-ps1/0.7.0/share/kube-ps1.sh
-PROMPT='$(kube_ps1)'$'\n'$PROMPT
-export KUBE_PS1_SYMBOL_USE_IMG=true
-function get_cluster_short() {
-  echo "$1" | rev | cut -d '/' -f 1 | rev
-}
-export KUBE_PS1_CLUSTER_FUNCTION=get_cluster_short
-export KUBE_PS1_SUFFIX=")"
+export NVM_DIR="~/.nvm"
+alias ij=idea
+# source ~/.nvm/nvm.sh
+export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
+alias npm="/opt/homebrew/lib/node_modules/npm/bin/npm-cli.js"
+export JAVA_11_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home"
+export JAVA_HOME="$JAVA_11_HOME"
+alias tojava11="export JAVA_HOME=$JAVA_11_HOME"
+alias dev="cd ~/dev"
+alias ux="cd ~/dev/zigzag-ux"
+alias consumer="cd ~/dev/zigzag-consumer"
+alias api2="cd ~/dev/zigzag-consumer"
+alias user-feedback="cd ~/dev/zigzag-user-feedback"
