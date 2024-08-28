@@ -72,7 +72,9 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+    git
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,22 +104,63 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias cl="clear"
+alias sshDB="ssh -i ~/supergongu.pem ubuntu@43.200.113.97"
 alias sshGongu="ssh -i ~/supergongu.pem ubuntu@ec2-13-124-109-155.ap-northeast-2.compute.amazonaws.com"
 alias sshStrapi="ssh -i ~/supergongu.pem ubuntu@ec2-43-200-152-135.ap-northeast-2.compute.amazonaws.com"
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 alias gs="git status"
 alias gp="git push"
 alias gc="git checkout"
-export NVM_DIR="~/.nvm"
 alias ij=idea
-# source ~/.nvm/nvm.sh
 export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
 alias npm="/opt/homebrew/lib/node_modules/npm/bin/npm-cli.js"
 export JAVA_11_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home"
-export JAVA_HOME="$JAVA_11_HOME"
 alias tojava11="export JAVA_HOME=$JAVA_11_HOME"
+# export JAVA_8_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
+export JAVA_8_HOME="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home"
+alias tojava8="export JAVA_HOME=$(/usr/libexec/java_home -v '1.8*') && export JAVA_HOME=$JAVA_8_HOME"
+export JAVA_HOME="$JAVA_8_HOME"
 alias dev="cd ~/dev"
 alias ux="cd ~/dev/zigzag-ux"
 alias consumer="cd ~/dev/zigzag-consumer"
 alias api2="cd ~/dev/zigzag-consumer"
 alias user-feedback="cd ~/dev/zigzag-user-feedback"
+alias app="cd ~/dev/sheetah-app"
+alias web="cd ~/dev/sheetah-web"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+alias ij="idea"
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
+
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+
+export GEM_HOME=$HOME/.gem
+export PATH=$GEM_HOME/bin:$PATH
+export CLOUDFRONT_DIST_ID=E1ZBVIUENOV84W
+
+# pnpm
+export PNPM_HOME="/Users/lopun/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/mysql-client/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/mysql-client/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql-client/lib/pkgconfig"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+source $(brew --prefix nvm)/nvm.sh
+export NVM_DIR=~/.nvm
+source $NVM_DIR/nvm.sh
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
